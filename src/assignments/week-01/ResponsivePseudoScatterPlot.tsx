@@ -9,7 +9,7 @@ interface DataPoint {
 }
 
 const data: DataPoint[] = [
-  { x: 132, y: 391 },
+  { x: 100, y: 100 },
   { x: 330, y: 349 },
   { x: 410, y: 192 },
   { x: 527, y: 257 },
@@ -34,12 +34,16 @@ export function ResponsivePseudoScatterPlot() {
     const yScale = scaleLinear().domain([0, ORIGINAL_HEIGHT]).range([0, dimensions.height]);
 
     select(svg)
-      .selectAll('circle')
+      .selectAll('rect')
       .data(data)
-      .join('circle')
-      .attr('cx', (d: DataPoint) => xScale(d.x))
-      .attr('cy', (d: DataPoint) => yScale(d.y))
-      .attr('r', RADIUS);
+      .join('rect')
+      .attr('x', (d: DataPoint) => xScale(d.x) - RADIUS)
+      .attr('y', (d: DataPoint) => yScale(d.y) - RADIUS)
+      .attr('width', RADIUS * 2)
+      .attr('height', RADIUS * 2)
+      .attr("fill", "skyblue")
+      .attr("stroke", "red")
+      .attr("stroke-width", 2);
   }, [dimensions]);
 
   return (
@@ -53,3 +57,4 @@ export function ResponsivePseudoScatterPlot() {
     </div>
   );
 }
+

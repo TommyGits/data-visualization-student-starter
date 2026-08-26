@@ -38,18 +38,18 @@ function App() {
   }, [toggleSidebar]);
 
   return (
-    <div className="w-screen h-screen flex bg-white">
+    <div className="w-screen h-screen flex bg-black-50">
       {/* Left Sidebar - Navigation */}
       {!hideSidebar && (
-        <div className="w-[250px] border-r border-gray-300 p-4 overflow-y-auto">
-          <h2 className="text-lg font-semibold mb-4">Assignments</h2>
+        <div className="w-[250px] border-r border-blue-300 p-4 overflow-y-auto">
+          <h2 className="text-lg font-bold mb-4">Assignments</h2>
           <nav className="space-y-2">
             {assignments.map((assignment) => (
               <button
                 key={assignment.id}
                 onClick={() => handleSelectAssignment(assignment.id)}
                 className={`w-full text-left px-3 py-2 rounded transition-colors ${
-                  selectedAssignmentId === assignment.id ? 'font-bold bg-gray-100' : 'hover:bg-gray-50'
+                  selectedAssignmentId === assignment.id ? 'font-bold bg-red-100' : 'hover:bg-red-50'
                 }`}
               >
                 {assignment.name}
