@@ -71,7 +71,6 @@ export function SteamSum() {
   const { ref: divRef, dimensions } = useDimensions();
   const [summary, setSummary] = useState<Summary | null>(null);
 
-  // Load and parse the data once on mount
   useEffect(() => {
     let cancelled = false;
 
