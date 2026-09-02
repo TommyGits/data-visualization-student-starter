@@ -110,7 +110,6 @@ export function SteamSum() {
     };
   }, []);
 
-  // Draw text onto the SVG whenever summary or dimensions change
   useEffect(() => {
     const svg = svgRef.current;
     if (!svg || !summary || dimensions.width === 0) return;
