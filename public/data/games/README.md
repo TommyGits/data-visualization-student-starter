@@ -14,28 +14,28 @@ Source: https://www.kaggle.com/datasets/fronkongames/steam-games-dataset?resourc
 
 | Attribute | Type |
 |---|---|
-| AppID | Special (ID) — unique Steam application identifier |
-| Name | Categorical (nominal) |
+| AppID | Special (ID) |
+| Name | Categorical |
 | Release date | Temporal (date) |
-| Estimated owners | Ordinal — bucketed range, e.g. "0 - 20000" |
+| Estimated owners | Ordinal |
 | Peak CCU | Quantitative |
-| Required age | Quantitative (discrete) |
+| Required age | Quantitative |
 | Price | Quantitative |
 | Discount | Quantitative |
-| DLC count | Quantitative (discrete) |
-| Windows | Categorical (binary) |
-| Mac | Categorical (binary) |
-| Linux | Categorical (binary) |
+| DLC count | Quantitative |
+| Windows | Categorical |
+| Mac | Categorical |
+| Linux | Categorical |
 | Metacritic score | Quantitative |
 | User score | Quantitative |
 | Positive | Quantitative |
 | Negative | Quantitative |
-| Achievements | Quantitative (discrete) |
+| Achievements | Quantitative |
 | Recommendations | Quantitative |
 | Average playtime forever | Quantitative |
 | Median playtime forever | Quantitative |
-| Developers | Categorical (nominal) |
-| Publishers | Categorical (nominal) |
-| Categories | Categorical (nominal, multi-valued) |
-| Genres | Categorical (nominal, multi-valued) |
-| Tags | Categorical (nominal, multi-valued) |
+| Developers | Categorical |
+| Publishers | Categorical |
+| Categories | Categorical |
+| Genres | Categorical |
+| Tags | Categorical |
