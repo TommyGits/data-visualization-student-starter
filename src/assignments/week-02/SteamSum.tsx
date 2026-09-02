@@ -1,46 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { select } from 'd3-selection';
+import { useDimensions } from '../week-01/useDimensions';
 
-interface GameRow {
-  AppID: string;
-  Name: string;
-  'Release date': string;
-  'Estimated owners': string;
-  'Peak CCU': string;
-  'Required age': string;
-  Price: string;
-  Discount: string;
-  'DLC count': string;
-  Windows: string;
-  Mac: string;
-  Linux: string;
-  'Metacritic score': string;
-  'User score': string;
-  Positive: string;
-  Negative: string;
-  Achievements: string;
-  Recommendations: string;
-  'Average playtime forever': string;
-  'Median playtime forever': string;
-  Developers: string;
-  Publishers: string;
-  Categories: string;
-  Genres: string;
-  Tags: string;
-}
-
-interface SummaryStats {
-  rowCount: number;
-  columnCount: number;
+interface Summary {
+  rows: number;
+  columns: number;
   columnNames: string[];
-  averagePrice: number;
-  averageMetacritic: number;
-  windowsCount: number;
-  macCount: number;
-  linuxCount: number;
   topGenres: { genre: string; count: number }[];
 }
 
-function parseCSV(text: string): GameRow[] {
+function parseCSV(text: string): Record<string, string>[] {
   const rows: string[][] = [];
   let current: string[] = [];
   let field = '';
@@ -49,7 +18,6 @@ function parseCSV(text: string): GameRow[] {
   for (let i = 0; i < text.length; i++) {
     const char = text[i];
     const next = text[i + 1];
-
     if (inQuotes) {
       if (char === '"' && next === '"') {
         field += '"';
@@ -89,129 +57,90 @@ function parseCSV(text: string): GameRow[] {
     headers.forEach((h, i) => {
       obj[h] = row[i] ?? '';
     });
-    return obj as unknown as GameRow;
+    return obj;
   });
 }
 
-function summarize(data: GameRow[]): SummaryStats {
-  const columnNames = data.length > 0 ? Object.keys(data[0]) : [];
+const DATA_URL = `${import.meta.env.BASE_URL}data/games/games.csv`;
 
-  const prices = data
-    .map((d) => parseFloat(d.Price))
-    .filter((p) => !Number.isNaN(p));
-  const averagePrice =
-    prices.reduce((sum, p) => sum + p, 0) / (prices.length || 1);
-
-  const metacriticScores = data
-    .map((d) => parseFloat(d['Metacritic score']))
-    .filter((s) => !Number.isNaN(s) && s > 0);
-  const averageMetacritic =
-    metacriticScores.reduce((sum, s) => sum + s, 0) /
-    (metacriticScores.length || 1);
-
-  const windowsCount = data.filter((d) => d.Windows === 'True').length;
-  const macCount = data.filter((d) => d.Mac === 'True').length;
-  const linuxCount = data.filter((d) => d.Linux === 'True').length;
-
-  const genreCounts = new Map<string, number>();
-  data.forEach((d) => {
-    if (!d.Genres) return;
-    d.Genres.split(',').forEach((g) => {
-      const genre = g.trim();
-      if (!genre) return;
-      genreCounts.set(genre, (genreCounts.get(genre) || 0) + 1);
-    });
-  });
-  const topGenres = Array.from(genreCounts.entries())
-    .map(([genre, count]) => ({ genre, count }))
-    .sort((a, b) => b.count - a.count)
-    .slice(0, 10);
-
-  return {
-    rowCount: data.length,
-    columnCount: columnNames.length,
-    columnNames,
-    averagePrice,
-    averageMetacritic,
-    windowsCount,
-    macCount,
-    linuxCount,
-    topGenres,
-  };
-}
+const FONT_SIZE = 20;
+const LINE_HEIGHT = FONT_SIZE * 1.4;
 
 export function SteamSum() {
-  const [data, setData] = useState<GameRow[] | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const svgRef = useRef<SVGSVGElement>(null);
+  const { ref: divRef, dimensions } = useDimensions();
+  const [summary, setSummary] = useState<Summary | null>(null);
 
+  // Load and parse the data once on mount
   useEffect(() => {
-  fetch(`${import.meta.env.BASE_URL}data/games/games.csv`)      .then((res) => res.text())
-      .then((text) => setData(parseCSV(text)))
-      .catch((err) => setError(String(err)));
+    let cancelled = false;
+
+    fetch(DATA_URL)
+      .then((res) => res.text())
+      .then((text) => {
+        if (cancelled) return;
+
+        const parsed = parseCSV(text);
+
+        const genreCounts = new Map<string, number>();
+        parsed.forEach((row) => {
+          const genres = row.Genres;
+          if (!genres) return;
+          genres.split(',').forEach((g) => {
+            const genre = g.trim();
+            if (!genre) return;
+            genreCounts.set(genre, (genreCounts.get(genre) || 0) + 1);
+          });
+        });
+        const topGenres = Array.from(genreCounts.entries())
+          .map(([genre, count]) => ({ genre, count }))
+          .sort((a, b) => b.count - a.count)
+          .slice(0, 10);
+
+        setSummary({
+          rows: parsed.length,
+          columns: parsed.length > 0 ? Object.keys(parsed[0]).length : 0,
+          columnNames: parsed.length > 0 ? Object.keys(parsed[0]) : [],
+          topGenres,
+        });
+      });
+
+    return () => {
+      cancelled = true;
+    };
   }, []);
 
-  if (error) {
-    return <p style={{ color: 'red' }}>Failed to load dataset: {error}</p>;
-  }
+  // Draw text onto the SVG whenever summary or dimensions change
+  useEffect(() => {
+    const svg = svgRef.current;
+    if (!svg || !summary || dimensions.width === 0) return;
 
-  if (!data) {
-    return <p>Loading dataset...</p>;
-  }
+    const lines: string[] = [
+      `Steam Games Dataset`,
+      `Rows: ${summary.rows.toLocaleString()}`,
+      `Columns: ${summary.columns}`,
+      ``,
+      `Top 10 Genres:`,
+      ...summary.topGenres.map(
+        (g, i) => `${i + 1}. ${g.genre} — ${g.count.toLocaleString()} games`,
+      ),
+    ];
 
-  const stats = summarize(data);
+    select(svg)
+      .selectAll('text')
+      .data(lines)
+      .join('text')
+      .attr('x', 20)
+      .attr('y', (_, i) => (i + 1) * LINE_HEIGHT)
+      .attr('font-size', FONT_SIZE)
+      .attr('font-family', 'sans-serif')
+      .attr('font-weight', (_, i) => (i === 0 || i === 4 ? 'bold' : 'normal'))
+      .text((d) => d);
+  }, [summary, dimensions]);
 
   return (
-    <div style={{ fontFamily: 'sans-serif', padding: '1rem', maxWidth: 700 }}>
-      <h2>Steam Games Dataset Summary</h2>
-
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h3>Shape</h3>
-        <p>
-          <strong>{stats.rowCount.toLocaleString()}</strong> rows &times;{' '}
-          <strong>{stats.columnCount}</strong> columns
-        </p>
-      </section>
-
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h3>Columns</h3>
-        <ul
-          style={{
-            columns: 2,
-            listStyle: 'none',
-            paddingLeft: 0,
-            fontSize: '0.9rem',
-          }}
-        >
-          {stats.columnNames.map((col) => (
-            <li key={col}>{col}</li>
-          ))}
-        </ul>
-      </section>
-
-      <section style={{ marginBottom: '1.5rem' }}>
-        <h3>Quick Stats</h3>
-        <ul>
-          <li>Average price: ${stats.averagePrice.toFixed(2)}</li>
-          <li>
-            Average Metacritic score (rated games only):{' '}
-            {stats.averageMetacritic.toFixed(1)}
-          </li>
-          <li>Windows support: {stats.windowsCount.toLocaleString()} games</li>
-          <li>Mac support: {stats.macCount.toLocaleString()} games</li>
-          <li>Linux support: {stats.linuxCount.toLocaleString()} games</li>
-        </ul>
-      </section>
-
-      <section>
-        <h3>Top 10 Genres</h3>
-        <ol>
-          {stats.topGenres.map(({ genre, count }) => (
-            <li key={genre}>
-              {genre} &mdash; {count.toLocaleString()} games
-            </li>
-          ))}
-        </ol>
-      </section>
+    <div ref={divRef} style={{ width: '100%', height: '100%' }}>
+      <svg ref={svgRef} width={dimensions.width} height={dimensions.height} />
     </div>
   );
 }
