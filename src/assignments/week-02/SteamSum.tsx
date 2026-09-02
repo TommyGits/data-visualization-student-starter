@@ -70,7 +70,7 @@ export function SteamSum() {
   const svgRef = useRef<SVGSVGElement>(null);
   const { ref: divRef, dimensions } = useDimensions();
   const [summary, setSummary] = useState<Summary | null>(null);
-
+  
   useEffect(() => {
     let cancelled = false;
 
