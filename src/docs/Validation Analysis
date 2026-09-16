@@ -1,0 +1,13 @@
+## Validation Analysis
+
+# Domain Situation
+This will checks whether I understand what the users needs. Therefore the target user wants to compare stocks, track price changes over time, and spot large swings. The mistake would be building a complex dashboard so we will be building it for beginners who need simpler explanations.
+
+# Data and Task Abstraction
+This will translates user needs into data and tasks. The data includes the company names, dates, and prices. The key tasks are comparing vaules and identifying trends. 
+
+# Visual Encoding
+This will check if charts show how the stock prices change over time and bar charts to compare the percentage gains or losses between comapnies. The users would pick which stock to view, choose a date range, and hover over the chart
+
+# Algorithm
+This will checks whether the system actuallyt work in general. Things like sortings dates, percentages changes, filtering the data, and updating the charts for the users. 

@@ -2,6 +2,7 @@ import type { ComponentType } from 'react';
 import { ResponsivePseudoScatterPlot } from './week-01/ResponsivePseudoScatterPlot';
 import { SteamSum } from './week-02/SteamSum';
 import { SteamScatterPlot } from './week-03/SteamScatterPlot';
+import { UpdateSteamScatterPlot } from './week-04/UpdateSteamScatterPlot';
 
 export interface Assignment {
   id: string;
@@ -24,6 +25,11 @@ export const assignments: Assignment[] = [
     id: '3',
     name: 'Week 3',
     component: SteamScatterPlot,
+  },
+  {
+    id: '4',
+    name: 'Week 4',
+    component: UpdateSteamScatterPlot,
   },
 ];
 
