@@ -25,3 +25,8 @@ When I made this sketch, I want it to compare two stock performance from the pre
 ![Third Sketch](image-2.png)
 
 When I made this sketch, I want to make a home page for the dashboard and make it interactive to switch between what to look at
+
+# week 5 sketch
+![idea](image-3.png)
+
+By using AI image to create my idea this is what I have imagine what the dashboard would look like or concept of what could it be
