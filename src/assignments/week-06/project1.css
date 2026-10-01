@@ -1,0 +1,138 @@
+.stock-project {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  padding: 12px;
+  background: white;
+  color: black;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  color-scheme: light;
+}
+
+.stock-project h1 {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.stock-project h2 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 16px 0 10px;
+}
+
+.stock-project p {
+  margin: 10px 0;
+  line-height: 1.5;
+}
+
+.stock-heading {
+  margin-bottom: 20px;
+}
+
+.stock-project a {
+  color: blue;
+  text-decoration: underline;
+}
+
+.stock-choices, .stock-dates, .stock-presets, .stock-readout {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 12px 0;
+}
+
+.stock-project button {
+  border: 1px solid gray;
+  background: #eeeeee;
+  color: black;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.stock-project button[aria-pressed='true'] {
+  background: #dddddd;
+  font-weight: bold;
+}
+
+.stock-readout i {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-right: 5px;
+}
+
+.stock-dates input {
+  display: block;
+  border: 1px solid gray;
+  padding: 4px;
+  margin-top: 4px;
+}
+
+.stock-panel {
+  margin-top: 15px;
+}
+
+.stock-chart {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.stock-slider {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+}
+
+.stock-slider input {
+  width: 220px;
+  max-width: 100%;
+}
+
+.stock-readout {
+  font-size: 14px;
+}
+
+.stock-table {
+  overflow-x: auto;
+}
+
+.stock-project table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.stock-project th, .stock-project td {
+  border: 1px solid gray;
+  padding: 5px;
+  text-align: left;
+}
+
+.stock-project th {
+  background: #eeeeee;
+}
+
+.stock-project small {
+  display: block;
+}
+
+.stock-positive {
+  color: #146b20;
+}
+
+.stock-negative, .stock-error {
+  color: #b00000;
+}
+
+.stock-project button:focus-visible, .stock-project input:focus-visible, .stock-project a:focus-visible {
+  outline: 2px solid blue;
+  outline-offset: 2px;
+}
+

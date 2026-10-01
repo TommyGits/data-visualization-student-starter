@@ -4,6 +4,7 @@ import { SteamSum } from './week-02/SteamSum';
 import { SteamScatterPlot } from './week-03/SteamScatterPlot';
 import { UpdateSteamScatterPlot } from './week-04/UpdateSteamScatterPlot';
 import { interact } from './week-05/interact';
+import { Project1 } from './week-06/project1';
 
 export interface Assignment {
   id: string;
@@ -37,10 +38,15 @@ export const assignments: Assignment[] = [
     name: 'Week 5',
     component: interact,
   },
+  {
+    id: '6',
+    name: 'Week 6',
+    component: Project1,
+  },
 ];
 
 export const assignmentsMap = new Map(
-  assignments.map((ex) => [ex.id, ex])
+  assignments.map((assignment) => [assignment.id, assignment])
 );
 
-export const defaultAssignment = '1';
+export const defaultAssignment = '6';
