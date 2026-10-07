@@ -5,6 +5,7 @@ import { SteamScatterPlot } from './week-03/SteamScatterPlot';
 import { UpdateSteamScatterPlot } from './week-04/UpdateSteamScatterPlot';
 import { interact } from './week-05/interact';
 import { Project1 } from './week-06/project1';
+import BinaryBlackHoles from './week-07/BinaryBlackHoles';
 
 export interface Assignment {
   id: string;
@@ -42,6 +43,11 @@ export const assignments: Assignment[] = [
     id: '6',
     name: 'Week 6',
     component: Project1,
+  },
+  {
+    id: '7',
+    name: 'Week 7',
+    component: BinaryBlackHoles,
   },
 ];
 
