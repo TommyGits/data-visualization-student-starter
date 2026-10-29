@@ -7,6 +7,7 @@ import { interact } from "./week-05/interact";
 import { Project1 } from "./week-06/project1";
 import BinaryBlackHoles from "./week-07/BinaryBlackHoles";
 import { StockExplorer } from "./week-08/StockExplorer";
+import { InteractiveStockExplorer } from "./week-10/InteractiveStockExplorer";
 
 export interface Assignment {
   id: string;
@@ -55,10 +56,15 @@ export const assignments: Assignment[] = [
     name: "Week 8",
     component: StockExplorer,
   },
+  {
+    id: "10",
+    name: "Week 10",
+    component: InteractiveStockExplorer,
+  },
 ];
 
 export const assignmentsMap = new Map(
   assignments.map((assignment) => [assignment.id, assignment]),
 );
 
-export const defaultAssignment = "8";
+export const defaultAssignment = "10";

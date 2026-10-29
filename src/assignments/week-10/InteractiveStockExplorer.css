@@ -1,0 +1,561 @@
+.stock10 {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  overflow: auto;
+  background: #f4f7fb;
+  color: #17243c;
+  color-scheme: light;
+  font-family: "Segoe UI", Arial, sans-serif;
+  font-size: 14px;
+}
+.stock10,
+.stock10 * {
+  box-sizing: border-box;
+}
+.stock10-content {
+  max-width: 1380px;
+  margin: 0 auto;
+  padding: 42px 38px 24px;
+}
+.stock10-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+  margin-bottom: 30px;
+}
+.stock10 .stock10-eyebrow {
+  margin: 0 0 9px;
+  color: #526385;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.13em;
+}
+.stock10 h1 {
+  margin: 0;
+  font-size: clamp(25px, 2.8vw, 37px);
+  letter-spacing: -0.045em;
+  line-height: 1.2;
+  font-weight: 700;
+}
+.stock10 .stock10-intro {
+  color: #64748b;
+  margin: 12px 0 0;
+  line-height: 1.65;
+}
+.stock10-download {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  flex-shrink: 0;
+  border: 1px solid #dbe3ef;
+  border-radius: 10px;
+  padding: 11px 16px;
+  color: #344465;
+  background: white;
+  text-decoration: none;
+  font-weight: 600;
+}
+.stock10-download:hover {
+  border-color: #4263eb;
+  color: #324ec3;
+}
+.stock10-download span {
+  font-size: 20px;
+  line-height: 1;
+}
+.stock10-card {
+  background: white;
+  border: 1px solid #e1e7f0;
+  border-radius: 16px;
+  box-shadow: 0 3px 15px #17243c03;
+}
+.stock10-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  padding: 22px 26px;
+  margin-bottom: 22px;
+}
+.stock10 fieldset {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  min-width: 0;
+}
+.stock10 legend {
+  font-size: 12px;
+  font-weight: 650;
+  margin-bottom: 12px;
+  color: #526079;
+}
+.stock10-choices {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.stock10-choices label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 11px;
+  border: 1px solid #e1e7f0;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #64748b;
+  font-size: 12px;
+  font-weight: 650;
+}
+.stock10-choices label.is-selected {
+  color: #253651;
+  border-color: #c9d4ed;
+  background: #f4f7ff;
+}
+.stock10-choices label:hover {
+  border-color: #4263eb;
+}
+.stock10 input[type="checkbox"] {
+  accent-color: #4263eb;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+}
+.stock10-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+.stock10-dates {
+  display: flex;
+  align-items: flex-end;
+  gap: 12px;
+}
+.stock10-dates label {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+  color: #526079;
+  font-weight: 650;
+}
+.stock10-dates > span {
+  padding-bottom: 11px;
+  color: #94a3b8;
+}
+.stock10-dates input {
+  width: 145px;
+  max-width: 100%;
+  font-family: inherit;
+  font-size: 12px;
+  color: #253651;
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  padding: 9px 10px;
+  background: white;
+}
+.stock10-panel {
+  padding: 27px 26px 0;
+  margin-bottom: 22px;
+}
+.stock10-section-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.stock10 h2 {
+  margin: 0;
+  font-size: 21px;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+}
+.stock10 .stock10-muted {
+  color: #64748b;
+  font-size: 12px;
+  line-height: 1.6;
+  margin: 8px 0 0;
+}
+.stock10-chart-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.stock10-reset {
+  border: 1px solid #dbe3ef;
+  border-radius: 8px;
+  padding: 10px 13px;
+  color: #344465;
+  background: white;
+  cursor: pointer;
+  font:
+    600 12px "Segoe UI",
+    Arial,
+    sans-serif;
+}
+.stock10-reset:hover:not(:disabled) {
+  border-color: #4263eb;
+  color: #324ec3;
+  background: #f4f7ff;
+}
+.stock10-reset:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+.stock10-presets {
+  display: inline-flex;
+  padding: 4px;
+  gap: 3px;
+  border: 1px solid #e8edf4;
+  border-radius: 9px;
+  background: #f5f7fb;
+}
+.stock10-presets button {
+  border: 0;
+  border-radius: 6px;
+  padding: 7px 13px;
+  color: #64748b;
+  background: transparent;
+  cursor: pointer;
+  font:
+    600 12px "Segoe UI",
+    Arial,
+    sans-serif;
+}
+.stock10-presets button:hover {
+  color: #324ec3;
+  background: #e8edff;
+}
+.stock10-presets button[aria-pressed="true"] {
+  background: #344fd1;
+  color: white;
+  box-shadow: 0 2px 4px #344fd126;
+}
+.stock10-chart-frame {
+  position: relative;
+  margin: 24px -8px 0;
+}
+.stock10-chart-scroll {
+  overflow-x: auto;
+}
+.stock10-chart {
+  display: block;
+  width: 100%;
+  min-width: 560px;
+  height: auto;
+  cursor: crosshair;
+  touch-action: none;
+  user-select: none;
+}
+.stock10-selection {
+  fill: #4263eb26;
+  stroke: #4263eb;
+  stroke-width: 1;
+  pointer-events: none;
+}
+.stock10-tooltip {
+  position: absolute;
+  top: 12px;
+  left: 80px;
+  width: 236px;
+  max-width: calc(100% - 24px);
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid #dbe3ef;
+  background: #fffffffa;
+  box-shadow: 0 8px 28px #1b2e4924;
+  pointer-events: none;
+  z-index: 2;
+}
+.stock10-tooltip-right {
+  left: auto;
+  right: 24px;
+}
+.stock10-tooltip-date {
+  font-weight: 700;
+  margin: 0;
+  font-size: 13px;
+}
+.stock10-tooltip-hint {
+  margin: 4px 0 10px;
+  color: #64748b;
+  font-size: 11px;
+}
+.stock10-tooltip-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding-top: 9px;
+  margin-top: 9px;
+  border-top: 1px solid #edf1f7;
+  font-size: 12px;
+}
+.stock10-tooltip-row > span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.stock10-tooltip-row strong {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.stock10-tooltip-row small {
+  display: block;
+  margin-top: 2px;
+  font-size: 11px;
+  font-weight: 500;
+}
+.stock10-explore {
+  margin: 10px 0 22px;
+  padding: 17px 18px 13px;
+  background: #f8fafd;
+  border: 1px solid #edf1f7;
+  border-radius: 10px;
+}
+.stock10-explore > div {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+}
+.stock10-explore label {
+  font-weight: 650;
+}
+.stock10-explore span {
+  color: #526385;
+}
+.stock10-explore input {
+  display: block;
+  accent-color: #4263eb;
+  width: 100%;
+  margin: 14px 0 8px;
+  cursor: pointer;
+}
+.stock10-explore p {
+  font-size: 11px;
+  color: #64748b;
+  margin: 0;
+}
+.stock10-readout {
+  display: flex;
+  flex-wrap: wrap;
+  border-top: 1px solid #e8edf4;
+  margin: 0 -26px;
+  padding: 0 10px;
+}
+.stock10-readout > div {
+  flex: 1 1 150px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  padding: 19px 17px;
+  gap: 6px 12px;
+}
+.stock10-readout > div > span {
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #64748b;
+  font-size: 12px;
+}
+.stock10-readout strong {
+  font-size: 22px;
+  font-weight: 650;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+}
+.stock10-readout small {
+  align-self: center;
+  font-size: 12px;
+  font-weight: 600;
+}
+.stock10 .stock10-positive {
+  color: #087b61;
+}
+.stock10 .stock10-negative {
+  color: #bf3650;
+}
+.stock10-results {
+  padding: 26px;
+}
+.stock10-badge {
+  padding: 7px 10px;
+  border-radius: 6px;
+  background: #f1f5fb;
+  color: #526385;
+  font-size: 11px;
+  font-weight: 600;
+}
+.stock10-table-scroll {
+  width: 100%;
+  overflow-x: auto;
+  margin-top: 24px;
+}
+.stock10 table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  font-size: 13px;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+.stock10 thead th {
+  padding: 12px 16px;
+  background: #f7f9fc;
+  color: #526385;
+  font-size: 11px;
+  font-weight: 600;
+  border-bottom: 1px solid #e1e7f0;
+}
+.stock10 th:first-child {
+  text-align: left;
+}
+.stock10 tbody th,
+.stock10 tbody td {
+  padding: 17px 16px;
+  border-bottom: 1px solid #edf1f7;
+}
+.stock10 tbody tr:last-child > * {
+  border-bottom: 0;
+}
+.stock10 tbody tr:hover {
+  background: #fafbff;
+}
+.stock10-asset {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-weight: 650;
+}
+.stock10-asset small {
+  display: block;
+  margin-top: 3px;
+  color: #64748b;
+  font-weight: 400;
+  font-size: 11px;
+}
+.stock10-ending {
+  font-weight: 650;
+}
+.stock10-footer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 8px 24px;
+  padding: 20px 3px 4px;
+  font-size: 11px;
+  color: #64748b;
+  line-height: 1.6;
+}
+.stock10-empty {
+  padding: 65px 20px;
+  text-align: center;
+  color: #64748b;
+}
+.stock10-empty > span {
+  display: inline-block;
+  color: #4263eb;
+  background: #eef2ff;
+  border-radius: 12px;
+  padding: 4px 15px;
+  font-size: 30px;
+}
+.stock10-empty h3 {
+  color: #253651;
+  font-weight: 650;
+  margin: 16px 0 8px;
+}
+.stock10-empty p {
+  margin: 0;
+}
+.stock10 :is(button, input, a, svg):focus-visible {
+  outline: 3px solid #4263eb;
+  outline-offset: 3px;
+}
+.stock10-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+@media (max-width: 900px) {
+  .stock10-content {
+    padding: 28px 20px 20px;
+  }
+  .stock10-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .stock10-controls {
+    padding: 20px;
+  }
+  .stock10-panel,
+  .stock10-results {
+    padding: 22px 20px 0;
+  }
+  .stock10-results {
+    padding-bottom: 20px;
+  }
+  .stock10-readout {
+    margin: 0 -20px;
+  }
+  .stock10-tooltip {
+    left: 12px;
+  }
+  .stock10-tooltip-right {
+    left: auto;
+    right: 12px;
+  }
+}
+@media (max-width: 480px) {
+  .stock10-content {
+    padding: 22px 12px 16px;
+  }
+  .stock10-dates {
+    width: 100%;
+    gap: 8px;
+  }
+  .stock10-dates label {
+    flex: 1;
+    min-width: 0;
+  }
+  .stock10-dates input {
+    width: 100%;
+    min-width: 0;
+  }
+  .stock10-controls,
+  .stock10-panel,
+  .stock10-results {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  .stock10-readout {
+    margin: 0 -16px;
+    padding: 0;
+  }
+  .stock10-readout > div {
+    flex-basis: 100%;
+    grid-template-columns: 1fr auto auto;
+    align-items: center;
+    padding: 13px 16px;
+  }
+  .stock10-readout > div > span {
+    grid-column: auto;
+  }
+  .stock10-readout strong {
+    font-size: 18px;
+  }
+}
