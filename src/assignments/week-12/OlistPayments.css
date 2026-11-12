@@ -1,0 +1,11 @@
+.olist-payments { width: min(960px, 100%); padding: 32px; color: #203044; font-family: system-ui, sans-serif; }
+.olist-payments h1 { margin: 0 0 8px; font-size: 28px; }
+.olist-payments p { color: #5c6d7f; }
+.olist-chart { margin-top: 40px; }
+.olist-row { display: grid; grid-template-columns: 130px minmax(100px, 1fr) 190px; gap: 14px; align-items: center; margin: 22px 0; }
+.olist-label { text-transform: capitalize; }
+.olist-track { height: 34px; background: #edf3f8; border-radius: 4px; }
+.olist-bar { height: 100%; background: #2a7fbf; border-radius: 4px; }
+.olist-value { font-size: 14px; white-space: nowrap; }
+.olist-value small, .olist-note { color: #63788a; }
+@media (max-width: 700px) { .olist-payments { padding: 18px; } .olist-row { grid-template-columns: 1fr; gap: 5px; margin: 20px 0; } }

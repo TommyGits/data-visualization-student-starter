@@ -9,6 +9,7 @@ import BinaryBlackHoles from "./week-07/BinaryBlackHoles";
 import { StockExplorer } from "./week-08/StockExplorer";
 import { InteractiveStockExplorer } from "./week-10/InteractiveStockExplorer";
 import { UpdatedVisual } from "./week-11/UpdatedVisual";
+import { OlistPayments } from "./week-12/OlistPayments";
 
 export interface Assignment {
   id: string;
@@ -66,6 +67,11 @@ export const assignments: Assignment[] = [
     id: "11",
     name: "Week 11",
     component: UpdatedVisual,
+  },
+  {
+    id: "12",
+    name: "Week 12",
+    component: OlistPayments,
   },
 ];
 
